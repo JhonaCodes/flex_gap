@@ -15,23 +15,21 @@ import 'package:flutter/material.dart';
 /// 3. **Customization**: Can be easily incorporated into more complex layouts and custom rendering scenarios.
 ///
 class RenderBoxGap extends LeafRenderObjectWidget {
-
   final double? width;
   final double? height;
 
   const RenderBoxGap({super.key, this.width = 0.0, this.height = 0.0});
 
   @override
-  RenderObject createRenderObject(BuildContext context) => RenderGap(width: width, height: height);
-
+  RenderObject createRenderObject(BuildContext context) =>
+      RenderGap(width: width, height: height);
 
   @override
-  void updateRenderObject(BuildContext context, RenderGap renderObject) => renderObject
-    ..height = height
-    ..width = width;
-
+  void updateRenderObject(BuildContext context, RenderGap renderObject) =>
+      renderObject
+        ..height = height
+        ..width = width;
 }
-
 
 class RenderGap extends RenderBox {
   double? width;
@@ -41,8 +39,6 @@ class RenderGap extends RenderBox {
   @override
   void performLayout() => size = Size(width ?? 0.0, height ?? 0.0);
 
-
   @override
   void paint(PaintingContext context, Offset offset) {}
-
 }

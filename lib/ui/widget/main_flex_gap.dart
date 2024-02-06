@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 /// A custom version of the Flex widget that represents a flexible row or column in a flex_gap layout.
 ///
 /// `Mainflex_gap` is designed to simplify the creation of a flexible row or column within a flex_gap layout.
@@ -10,7 +11,7 @@ import 'package:flutter/material.dart';
 /// 2. **Integration**: Seamlessly integrates with the flex_gap layout for consistent spacing solutions.
 /// 3. **Configurability**: Inherits the flexibility of the Flex widget, allowing for customization of the main axis, alignment, and more.
 ///
-class MainFlexGap extends Flex{
+class MainFlexGap extends Flex {
   const MainFlexGap({
     super.key,
     required super.direction,

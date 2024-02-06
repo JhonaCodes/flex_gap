@@ -23,13 +23,12 @@ class MyApp extends StatelessWidget {
             width: double.infinity,
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration( border: Border.all( color: Colors.black, strokeAlign: 1) ),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, strokeAlign: 1)),
             child: FlexGap(
               axis: Axis.vertical,
               crossAxisAlignment: CrossAxisAlignment.center,
-              locatedSpace: const {
-                1 : 20
-              },
+              locatedSpace: const {1: 20},
               globalSpace: 50,
               startSpacerIndex: 4,
               children: [
@@ -47,7 +46,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class GapWidget extends StatelessWidget {
   final Color color;
   const GapWidget({super.key, required this.color});
@@ -60,17 +58,10 @@ class GapWidget extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7),
           color: color.withOpacity(0.3),
-          border: Border.all(
-              color: color,
-              strokeAlign: 1
-          )
-      ),
+          border: Border.all(color: color, strokeAlign: 1)),
     );
   }
 }
-
-
-
 
 List<Widget> _listElements = const [
   GapWidget(
@@ -91,7 +82,6 @@ List<Widget> _listElements = const [
   GapWidget(
     color: Colors.blue,
   ),
-
   GapWidget(
     color: Colors.black,
   ),

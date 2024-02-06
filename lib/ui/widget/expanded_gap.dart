@@ -13,5 +13,6 @@ import 'package:flutter/material.dart';
 /// 3. **flex_gap Integration**: Seamlessly integrates with the flex_gap layout for a consistent spacing solution.
 ///
 class ExpandedGap extends Flexible {
-  const ExpandedGap({ super.key, Widget? child}) : super(fit: FlexFit.tight, child: child ?? const Offstage(), flex: 1);
+  const ExpandedGap({super.key, Widget? child})
+      : super(fit: FlexFit.tight, child: child ?? const Offstage(), flex: 1);
 }

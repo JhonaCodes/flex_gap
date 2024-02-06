@@ -1,4 +1,3 @@
-
 import 'package:flex_gap/ui/widget/expanded_gap.dart';
 import 'package:flex_gap/ui/widget/main_flex_gap.dart';
 import 'package:flex_gap/ui/widget/scroll_gap.dart';
@@ -48,44 +47,42 @@ class FlexGap extends StatelessWidget {
   final bool isAdaptive;
   final ScrollController? scrollController;
   final bool scrollReverse;
-  const FlexGap({
-    super.key,
-    required this.children,
-    this.axis,
-    this.startSpacerIndex = 0,
-    this.globalSpace = 0.0,
-    this.locatedSpace = const {},
-    this.crossAxisAlignment,
-    this.mainAxisAlignment,
-    this.isScrollable = false,
-    this.physics,
-    this.isAdaptive = false,
-    this.scrollController,
-    this.scrollReverse = false
-  });
+  const FlexGap(
+      {super.key,
+      required this.children,
+      this.axis,
+      this.startSpacerIndex = 0,
+      this.globalSpace = 0.0,
+      this.locatedSpace = const {},
+      this.crossAxisAlignment,
+      this.mainAxisAlignment,
+      this.isScrollable = false,
+      this.physics,
+      this.isAdaptive = false,
+      this.scrollController,
+      this.scrollReverse = false});
 
   @override
   Widget build(BuildContext context) {
-
     Widget dataWidget = MainFlexGap(
       direction: axis ?? Axis.vertical,
       crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-      mainAxisAlignment: mainAxisAlignment   ?? MainAxisAlignment.start,
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
       children: _buildChildrenWithSpacing(),
     );
 
-    return isScrollable ? ScrollGap(
-      scrollDirection: axis ?? Axis.vertical,
-      physics: physics ?? const BouncingScrollPhysics(),
-      reverse: scrollReverse,
-      controller: scrollController,
-      child: dataWidget,
-    ) : dataWidget;
-
+    return isScrollable
+        ? ScrollGap(
+            scrollDirection: axis ?? Axis.vertical,
+            physics: physics ?? const BouncingScrollPhysics(),
+            reverse: scrollReverse,
+            controller: scrollController,
+            child: dataWidget,
+          )
+        : dataWidget;
   }
 
   List<Widget> _buildChildrenWithSpacing() {
-
     /// Each time it is called the return value will be empty, so the elements do not accumulate in the list.
     List<Widget> spacedChildren = [];
 
@@ -94,34 +91,38 @@ class FlexGap extends StatelessWidget {
 
       /// Applies space between elements
       if (i > 0 && globalSpace > 0) {
-        if (axis == Axis.horizontal)  spacedChildren.add(RenderBoxGap(width: globalSpace));
-        if (axis == Axis.vertical)    spacedChildren.add(RenderBoxGap(height: globalSpace));
+        if (axis == Axis.horizontal)
+          spacedChildren.add(RenderBoxGap(width: globalSpace));
+        if (axis == Axis.vertical)
+          spacedChildren.add(RenderBoxGap(height: globalSpace));
       }
 
       /// Applies space based on index
       if (locatedSpace.containsKey(i)) {
-        if (axis == Axis.horizontal) spacedChildren.add(RenderBoxGap(width: locatedSpace[i]));
-        if (axis == Axis.vertical)  spacedChildren.add(RenderBoxGap(height: locatedSpace[i]));
+        if (axis == Axis.horizontal)
+          spacedChildren.add(RenderBoxGap(width: locatedSpace[i]));
+        if (axis == Axis.vertical)
+          spacedChildren.add(RenderBoxGap(height: locatedSpace[i]));
       }
 
-      if(startSpacerIndex > 0 && i == (startSpacerIndex )) spacedChildren.add(const ExpandedGap());
+      if (startSpacerIndex > 0 && i == (startSpacerIndex))
+        spacedChildren.add(const ExpandedGap());
 
       spacedChildren.add(child);
     }
 
-    return isAdaptive ? [
-      /// Todo: Implement the use of a new list with spaces in case of applying separation by indexes using spaceBetween
-      ExpandedGap(
-        child: Wrap(
-          runSpacing: globalSpace,
-          spacing: globalSpace,
-          direction: axis ?? Axis.vertical,
-          children: [
-            ...spacedChildren
-          ],
-        ),
-      ),
-    ] : spacedChildren;
-
+    return isAdaptive
+        ? [
+            /// Todo: Implement the use of a new list with spaces in case of applying separation by indexes using spaceBetween
+            ExpandedGap(
+              child: Wrap(
+                runSpacing: globalSpace,
+                spacing: globalSpace,
+                direction: axis ?? Axis.vertical,
+                children: [...spacedChildren],
+              ),
+            ),
+          ]
+        : spacedChildren;
   }
 }

@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
-void main(){
-
+void main() {
   testWidgets('ExpandedGap expands horizontal', (WidgetTester tester) async {
     await tester.pumpWidget(
       const _BaseTestExpanded(
@@ -25,7 +24,8 @@ void main(){
 
     // Expectations
     // Adjust expectations based on your widget logic
-    expect(renderBox.size.width, equals(200.0));// Assuming horizontal expansion
+    expect(
+        renderBox.size.width, equals(200.0)); // Assuming horizontal expansion
     expect(renderBox.size.height, equals(100.0));
   });
 
@@ -52,7 +52,6 @@ void main(){
   });
 }
 
-
 class _BaseTestExpanded extends StatelessWidget {
   final Widget child;
   const _BaseTestExpanded({required this.child});
@@ -61,11 +60,7 @@ class _BaseTestExpanded extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SizedBox(
-          height: 300,
-          width: 300,
-          child: child
-        ),
+        body: SizedBox(height: 300, width: 300, child: child),
       ),
     );
   }

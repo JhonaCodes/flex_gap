@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 /// 2. **Scrolling Flexibility**: Retains the scrolling capabilities of SingleChildScrollView within the flex_gap context.
 /// 3. **Customization**: Inherits the properties of SingleChildScrollView, allowing for further customization.
 ///
-class ScrollGap extends SingleChildScrollView{
+class ScrollGap extends SingleChildScrollView {
   const ScrollGap({
     super.key,
     super.child,

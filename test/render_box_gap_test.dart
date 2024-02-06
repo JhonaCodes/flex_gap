@@ -3,8 +3,9 @@ import 'package:flex_gap/render/box_gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main(){
-  testWidgets('RenderBoxGap performs layout correctly', (WidgetTester tester) async {
+void main() {
+  testWidgets('RenderBoxGap performs layout correctly',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
@@ -25,5 +26,4 @@ void main(){
     // Expectations
     expect(renderBox.size, equals(const Size(50.0, 30.0)));
   });
-
 }

@@ -4,8 +4,9 @@ import 'package:flex_gap/ui/widget/scroll_gap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void main(){
-  testWidgets('ScrollGap and flex_gap integration', (WidgetTester tester) async {
+void main() {
+  testWidgets('ScrollGap and flex_gap integration',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
       home: Scaffold(
         body: ScrollGap(
@@ -24,7 +25,5 @@ void main(){
 
     await tester.drag(find.text('Widget 1'), const Offset(0.0, -100.0));
     await tester.pump();
-
   });
-
 }
