@@ -1,7 +1,7 @@
 name: flex_gap
 description: "FlexGap is a Flutter library for managing spaces and flexibility in your layouts."
 version: 0.2.0
-homepage: https://github.com/JhonaCodes/flex_gap.git
+homepage: https://github.com/JhonaCodes/flex_gap
 
 environment:
   sdk: '>=3.2.6 <4.0.0'

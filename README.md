@@ -16,7 +16,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flex_gap: ^0.1.9
+  flex_gap: ^0.2.0
 ```
 Or
 ## Rus this command:
