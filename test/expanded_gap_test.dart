@@ -1,4 +1,3 @@
-import 'package:flex_gap/flex_gap.dart';
 import 'package:flex_gap/ui/widget/expanded_gap.dart';
 
 import 'package:flutter/material.dart';

@@ -91,22 +91,27 @@ class FlexGap extends StatelessWidget {
 
       /// Applies space between elements
       if (i > 0 && globalSpace > 0) {
-        if (axis == Axis.horizontal)
+        if (axis == Axis.horizontal) {
           spacedChildren.add(RenderBoxGap(width: globalSpace));
-        if (axis == Axis.vertical)
+        }
+        if (axis == Axis.vertical) {
           spacedChildren.add(RenderBoxGap(height: globalSpace));
+        }
       }
 
       /// Applies space based on index
       if (locatedSpace.containsKey(i)) {
-        if (axis == Axis.horizontal)
+        if (axis == Axis.horizontal) {
           spacedChildren.add(RenderBoxGap(width: locatedSpace[i]));
-        if (axis == Axis.vertical)
+        }
+        if (axis == Axis.vertical) {
           spacedChildren.add(RenderBoxGap(height: locatedSpace[i]));
+        }
       }
 
-      if (startSpacerIndex > 0 && i == (startSpacerIndex))
+      if (startSpacerIndex > 0 && i == (startSpacerIndex)) {
         spacedChildren.add(const ExpandedGap());
+      }
 
       spacedChildren.add(child);
     }
