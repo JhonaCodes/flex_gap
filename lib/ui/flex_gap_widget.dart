@@ -3,7 +3,7 @@ import 'package:flex_gap/ui/widget/main_flex_gap.dart';
 import 'package:flex_gap/ui/widget/scroll_gap.dart';
 import 'package:flutter/material.dart';
 
-import '../render/box_gap.dart';
+import '../core/widget_list_controller.dart';
 
 /// A flexible and customizable widget that adds spacing between its children based on various configurations.
 ///
@@ -46,7 +46,7 @@ class FlexGap extends StatelessWidget {
   /// * This implementation it's under construction, Right now he's not on the best behavior.
   final bool isAdaptive;
   final ScrollController? scrollController;
-  final bool scrollReverse;
+  final bool isScrollableWithReverse;
   const FlexGap(
       {super.key,
       required this.children,
@@ -60,7 +60,7 @@ class FlexGap extends StatelessWidget {
       this.physics,
       this.isAdaptive = false,
       this.scrollController,
-      this.scrollReverse = false});
+      this.isScrollableWithReverse = false});
 
   @override
   Widget build(BuildContext context) {
@@ -71,63 +71,58 @@ class FlexGap extends StatelessWidget {
       children: _buildChildrenWithSpacing(),
     );
 
-    return isScrollable
-        ? ScrollGap(
-            scrollDirection: axis ?? Axis.vertical,
-            physics: physics ?? const BouncingScrollPhysics(),
-            reverse: scrollReverse,
-            controller: scrollController,
-            child: dataWidget,
-          )
-        : dataWidget;
-  }
-
-  List<Widget> _buildChildrenWithSpacing() {
-    /// Each time it is called the return value will be empty, so the elements do not accumulate in the list.
-    List<Widget> spacedChildren = [];
-
-    for (int i = 0; i < children.length; i++) {
-      final child = children[i];
-
-      /// Applies space between elements
-      if (i > 0 && globalSpace > 0) {
-        if (axis == Axis.horizontal) {
-          spacedChildren.add(RenderBoxGap(width: globalSpace));
-        }
-        if (axis == Axis.vertical) {
-          spacedChildren.add(RenderBoxGap(height: globalSpace));
-        }
-      }
-
-      /// Applies space based on index
-      if (locatedSpace.containsKey(i)) {
-        if (axis == Axis.horizontal) {
-          spacedChildren.add(RenderBoxGap(width: locatedSpace[i]));
-        }
-        if (axis == Axis.vertical) {
-          spacedChildren.add(RenderBoxGap(height: locatedSpace[i]));
-        }
-      }
-
-      if (startSpacerIndex > 0 && i == (startSpacerIndex)) {
-        spacedChildren.add(const ExpandedGap());
-      }
-
-      spacedChildren.add(child);
+    if (isScrollable || isScrollableWithReverse) {
+      return ScrollGap(
+        scrollDirection: axis ?? Axis.vertical,
+        physics: physics ?? const BouncingScrollPhysics(),
+        reverse: isScrollableWithReverse,
+        controller: scrollController,
+        child: dataWidget,
+      );
     }
 
-    return isAdaptive
-        ? [
-            /// Todo: Implement the use of a new list with spaces in case of applying separation by indexes using spaceBetween
-            ExpandedGap(
-              child: Wrap(
-                runSpacing: globalSpace,
-                spacing: globalSpace,
-                direction: axis ?? Axis.vertical,
-                children: [...spacedChildren],
-              ),
-            ),
-          ]
-        : spacedChildren;
+    return dataWidget;
+  }
+
+  /// TODO: Need implement a handler here..
+  List<Widget> _buildChildrenWithSpacing() {
+    WidgetListController controller = WidgetListController(
+      children,
+      axis,
+      startSpacerIndex,
+      globalSpace,
+      locatedSpace,
+    );
+
+    if (startSpacerIndex > 0 &&
+        !isScrollable &&
+        !isScrollableWithReverse &&
+        !isAdaptive) return controller.withExpanded();
+
+    if (globalSpace > 0 && !isAdaptive && locatedSpace.isEmpty) {
+      return controller.withGlobalSpace();
+    }
+
+    if (locatedSpace.isNotEmpty && !isAdaptive && globalSpace == 0) {
+      return controller.withIndexSpace();
+    }
+
+    if (isAdaptive && !isScrollableWithReverse && !isScrollable) {
+      return [
+        ExpandedGap(
+          child: Wrap(
+            runSpacing: globalSpace,
+            spacing: globalSpace,
+            direction: axis ?? Axis.vertical,
+            children: [
+              if (locatedSpace.isNotEmpty) ...controller.withIndexSpace(),
+              if (locatedSpace.isEmpty) ...children,
+            ],
+          ),
+        ),
+      ];
+    }
+
+    return controller.indexSpaceGlobalSpaceAndOrScrollable();
   }
 }

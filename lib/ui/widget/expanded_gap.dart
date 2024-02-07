@@ -14,5 +14,8 @@ import 'package:flutter/material.dart';
 ///
 class ExpandedGap extends Flexible {
   const ExpandedGap({super.key, Widget? child})
-      : super(fit: FlexFit.tight, child: child ?? const Offstage(), flex: 1);
+      : super(
+            fit: FlexFit.tight,
+            child: child ?? const SizedBox.shrink(),
+            flex: 1);
 }

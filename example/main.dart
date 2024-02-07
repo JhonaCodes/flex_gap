@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             child: FlexGap(
               axis: Axis.vertical,
               crossAxisAlignment: CrossAxisAlignment.center,
-              locatedSpace: const {1: 20},
+              locatedSpace: const {3: 100},
               globalSpace: 50,
               startSpacerIndex: 4,
               children: [
