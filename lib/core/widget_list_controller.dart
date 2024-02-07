@@ -55,14 +55,14 @@ typedef ProcessOnFor = Function(int index);
 /// List<Widget> processedChildren = builder.withGlobalSpace();
 /// ```
 ///
-class WidgetListController{
+class WidgetListController {
   final List<Widget> _children;
   final double? _globalSpace;
   final Axis? _axis;
-  final Map<int,double> _locatedSpace;
+  final Map<int, double> _locatedSpace;
   final int _startSpacerIndex;
-  WidgetListController( this._children, this._axis , this._startSpacerIndex,this._globalSpace, this._locatedSpace);
-
+  WidgetListController(this._children, this._axis, this._startSpacerIndex,
+      this._globalSpace, this._locatedSpace);
 
   /// List of widgets for spacing and layout manipulation.
   ///
@@ -74,7 +74,6 @@ class WidgetListController{
   /// or flexible spaces.
   ///
   final List<Widget> _spacedChildren = [];
-
 
   /// [withGlobalSpace] Adds a space widget to the `spacedChildren` list based on the specified global space value.
   ///
@@ -88,7 +87,6 @@ class WidgetListController{
   ///
   List<Widget> withGlobalSpace() => _forList(_addSPaceByOrientation);
 
-
   /// [withExpanded] Adds an [ExpandedGap] widget to the `spacedChildren` list if the `startSpacerIndex` is greater than 0.
   ///
   /// This method checks if the `startSpacerIndex` is greater than 0. If it is, it calls the [_addExpandedGap] function
@@ -99,8 +97,7 @@ class WidgetListController{
   /// Returns:
   ///   A list of widgets with an [ExpandedGap] added if the `startSpacerIndex` is greater than 0.
   ///
-  List<Widget> withExpanded() =>_forList(_addExpandedGap);
-
+  List<Widget> withExpanded() => _forList(_addExpandedGap);
 
   /// [withIndexSpace] Adds space widgets to the `spacedChildren` list based on specified indices.
   ///
@@ -115,7 +112,6 @@ class WidgetListController{
   ///
   List<Widget> withIndexSpace() => _forList(_addSpaceByIndex);
 
-
   /// Adds a space widget to the `spacedChildren` list based on the specified orientation.
   ///
   /// This method adds a space widget to the `spacedChildren` list if the current index
@@ -127,10 +123,9 @@ class WidgetListController{
   /// Parameters:
   ///   - `currentIndex`: The current index being processed.
   ///
-  _addSPaceByOrientation(int currentIndex){
+  _addSPaceByOrientation(int currentIndex) {
     if (currentIndex > 0) _addByAxis(_globalSpace!);
   }
-
 
   /// Adds an [ExpandedGap] widget to the `spacedChildren` list at the specified index.
   ///
@@ -145,7 +140,7 @@ class WidgetListController{
   /// Parameters:
   ///   - `index`: The index at which to add the [ExpandedGap] widget.
   ///
-  _addExpandedGap(int index){
+  _addExpandedGap(int index) {
     if (index == _startSpacerIndex) {
       _spacedChildren.add(const ExpandedGap());
     }
@@ -162,16 +157,14 @@ class WidgetListController{
   /// Parameters:
   ///   - `index`: The index at which to add the space widget.
   ///
-  _addSpaceByIndex(int index){
+  _addSpaceByIndex(int index) {
     if (_locatedSpace.containsKey(index)) _addByAxis(_locatedSpace[index]!);
   }
 
-
   List<Widget> indexSpaceGlobalSpaceAndOrScrollable() => _forList((index) {
-    _addSpaceByIndex(index);
-    _addSPaceByOrientation(index);
-  });
-
+        _addSpaceByIndex(index);
+        _addSPaceByOrientation(index);
+      });
 
   /// Iterates over the children list and applies a processing function to each element.
   ///
@@ -197,8 +190,7 @@ class WidgetListController{
   /// Returns:
   ///   A list of widgets with the processing applied to each element.
   ///
-  List<Widget> _forList( ProcessOnFor processOnFor){
-
+  List<Widget> _forList(ProcessOnFor processOnFor) {
     _spacedChildren.clear();
 
     for (int i = 0; i < _children.length; i++) {
@@ -220,8 +212,12 @@ class WidgetListController{
   /// Parameters:
   ///   - `space`: The amount of space to add (either width or height, depending on the axis).
   ///
-  _addByAxis(double space){
-    if (_axis == Axis.horizontal) _spacedChildren.add(RenderBoxGap(width: space));
-    if (_axis == Axis.vertical) _spacedChildren.add(RenderBoxGap(height: space));
+  _addByAxis(double space) {
+    if (_axis == Axis.horizontal) {
+      _spacedChildren.add(RenderBoxGap(width: space));
+    }
+    if (_axis == Axis.vertical) {
+      _spacedChildren.add(RenderBoxGap(height: space));
+    }
   }
 }
