@@ -3,6 +3,10 @@
 **All notable changes to this project will be documented in this file**
 
 ## MINOR
+0.3.1 - 2024-02-22
+> - Update readme file
+
+## MINOR
 0.3.0 - 2024-02-08
 > - New class `Controller` to separate responsibility.
 > - Considerable improvement in the validation logic.
