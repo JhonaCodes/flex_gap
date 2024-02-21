@@ -2,7 +2,7 @@
 
 FlexGap is a Flutter library for managing spaces and flexibility in your layouts.
 
-<img src="https://github.com/JhonaCodes/flexgap/assets/53523825/8e2fd9fb-e3a9-4950-bf49-b510d33cdefe" width="300" height="150"  alt=""/>
+<img src="https://github.com/JhonaCodes/flex_gap/assets/53523825/44dcda71-761d-4284-bd40-a969eb3f893c" width="300" height="150"  alt=""/>
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -45,7 +45,8 @@ FlexGap(
 ),
 ```
 
-<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flexgap/assets/53523825/b0b48ee9-d14a-4e2b-99e2-b33b9eb8ddaa">
+
+<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flex_gap/assets/53523825/1f20b421-9453-4fbc-a975-ec5a4d61dff0">
 
 
 ### isScrollable
@@ -66,8 +67,7 @@ FlexGap(
  ],
 ),
 ```
-<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flexgap/assets/53523825/4f8ea0c8-4459-4dfd-81e7-24842444ada4">
-
+<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flex_gap/assets/53523825/f5f326aa-4350-4ec6-9af8-6e4f46f45fb6">
 
 ### locatedSpace
 
@@ -90,7 +90,7 @@ FlexGap(
 ),
 ```
 
-<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flexgap/assets/53523825/de69e382-e3d8-4261-bd5d-010ffee5913d">
+<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flex_gap/assets/53523825/6b1292c1-02a7-4ed4-9548-7ed8f91d2ad9">
 
 ### globalSpace
 
@@ -110,8 +110,7 @@ FlexGap(
  ],
 ),
 ```
-<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flexgap/assets/53523825/fc551ad5-7788-4fb3-ba46-b7f85d1b6013">
-
+<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flex_gap/assets/53523825/ea8bb401-5aca-41b7-a25b-2c56722b4b77">
 
 
 
@@ -128,7 +127,7 @@ FlexGap(
 ),
 ```
 
-<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flexgap/assets/53523825/a900895e-75fa-476c-9e3e-0e094ce6b63b">
+<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flex_gap/assets/53523825/ae7edb41-b308-44a2-8c0f-7489b0685ee4">
 
 ###  MainAxisAlignment && CrossAxisAlignment 😃
 
@@ -152,7 +151,7 @@ FlexGap(
 
 ```
 
-<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flexgap/assets/53523825/137fda77-7568-41f5-9995-f2408a0ec427">
+<img width="250" height="500" alt="wrong_data" src="https://github.com/JhonaCodes/flex_gap/assets/53523825/a7daf786-cad3-4c08-a56c-f0a7f605de15">
 
 For this behavior you can also apply spaces in the desired index, enjoy experimenting and helping improve this library 🙃.
 
