@@ -3,7 +3,7 @@
 **All notable changes to this project will be documented in this file**
 
 ## MINOR
-0.3.2 - 2024-07-17
+(0.3.2, 0.3.3) - 2024-07-17
 > - Upgrade flutter version
 
 ## MINOR
